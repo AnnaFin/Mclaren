@@ -1,0 +1,1395 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>McLaren - Racing Heritage</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Rajdhani:wght@300;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #000000 0%, #1a1a1a 50%, #2a2a2a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+            padding-top: 100px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            padding: 15px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            border-bottom: 2px solid #FF5800;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo-section {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-gif {
+            width: 70px;
+            height: 60px;
+            border-radius: 10px;
+            overflow: hidden;
+            border: 2px solid #FF5800;
+            background: #1a1a1a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #FF5800;
+            font-size: 0.8rem;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .logo-gif img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .logo-text {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #FF5800;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            line-height: 1;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .tagline {
+            color: #cccccc;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            margin-top: 2px;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 20px;
+            position: relative;
+        }
+
+        .nav-links a {
+            color: #ffffff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease;
+            padding: 8px 15px;
+            border: 1px solid transparent;
+            border-radius: 25px;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+        }
+
+        .nav-links a:hover {
+            color: #FF5800;
+            border-color: #FF5800;
+        }
+
+        /* Dropdown Menu */
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: rgba(0, 0, 0, 0.95);
+            min-width: 200px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 88, 0, 0.3);
+            backdrop-filter: blur(10px);
+            z-index: 1001;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            display: block;
+            padding: 12px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .dropdown-content a:last-child {
+            border-bottom: none;
+        }
+
+        .dropdown-content a:hover {
+            background: rgba(0, 0, 0, 0.95);
+            color: #FF5800;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            background: linear-gradient(
+                    rgba(0, 0, 0, 0.7), 
+                    rgba(0, 0, 0, 0.5)
+                ), url("Фон.jpg")center/cover;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-content h1 {
+            font-size: 4rem;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .highlight {
+            color: #FF5800;
+            font-weight: 600;
+        }
+
+        .hero-line {
+            font-size: 1.8rem;
+            margin: 30px 0;
+            opacity: 0.9;
+            line-height: 1.4;
+            color: #cccccc;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .divider {
+            width: 100px;
+            height: 3px;
+            background: #FF5800;
+            margin: 40px auto;
+            opacity: 0.8;
+        }
+
+        /* Section Base Styles */
+        .section-base {
+            padding: 80px 0;
+            position: relative;
+        }
+
+        .section-divider {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #FF5800, transparent);
+            margin: 0 auto;
+            width: 80%;
+        }
+
+        .section-divider-top {
+            margin-bottom: 80px;
+        }
+
+        .section-divider-bottom {
+            margin-top: 80px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            text-align: center;
+            margin-bottom: 60px;
+            color: #FF5800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            text-shadow: 0 0 10px rgba(255, 88, 0, 0.5);
+        }
+
+        /* Custom Alert Styles */
+        .custom-alert {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #FF5800;
+            color: #000000;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 0 30px rgba(255, 88, 0, 0.7);
+            z-index: 10000;
+            text-align: center;
+            max-width: 400px;
+            width: 90%;
+        }
+
+        .custom-alert h3 {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .custom-alert p {
+            font-size: 1.1rem;
+            line-height: 1.5;
+        }
+
+        .custom-alert button {
+            background-color: #000000;
+            color: #FF5800;
+            border: 2px solid #000000;
+            padding: 10px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-top: 20px;
+            cursor: pointer;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .custom-alert button:hover {
+            background-color: #FF5800;
+            color: #000000;
+            border-color: #000000;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            z-index: 9999;
+        }
+
+        /* Models Section */
+        .models-section {
+            background: rgba(255, 88, 0, 0.05);
+            padding: 80px 40px;
+        }
+
+        .models-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            justify-items: center;
+        }
+        .model-image {
+            position: relative;
+            width: 100%;
+            height: 180px;
+            margin-bottom: 15px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 1px solid rgba(255, 88, 0, 0.3);
+        }
+        .car-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .model-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255, 88, 0, 0.3);
+            backdrop-filter: blur(10px);
+            width: 100%;
+            max-width: 350px;
+        }
+
+        .model-name {
+            font-size: 1.6rem;
+            color: #FF5800;
+            margin-bottom: 12px;
+            font-weight: 600;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .model-specs {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .model-specs li {
+            padding: 6px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+            font-size: 0.9rem;
+        }
+
+        .model-price {
+            font-size: 1.3rem;
+            color: #FF5800;
+            font-weight: bold;
+            margin: 15px 0;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        /* Comparison Table Section */
+        .comparison-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 80px 40px;
+        }
+
+        .table-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 40px;
+            border: 1px solid rgba(255, 88, 0, 0.3);
+            backdrop-filter: blur(10px);
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 800px;
+        }
+
+        .comparison-table caption {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #FF5800;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .comparison-table thead {
+            background: linear-gradient(135deg, #FF5800, #FF8C00);
+        }
+
+        .comparison-table th {
+            color: white;
+            padding: 20px 15px;
+            text-align: center;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        .comparison-table th:first-child {
+            text-align: left;
+        }
+
+        .comparison-table th:last-child {
+            border-right: none;
+        }
+
+        .comparison-table tbody tr {
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .comparison-table tbody tr:hover {
+            background-color: rgba(255, 88, 0, 0.1);
+        }
+
+        .comparison-table td {
+            padding: 18px 15px;
+            text-align: center;
+            border-right: 1px solid rgba(255, 255, 255, 0.1);
+            color: #cccccc;
+        }
+
+        .comparison-table td:first-child {
+            font-weight: 600;
+            color: #FF5800;
+            text-align: left;
+            background-color: rgba(255, 88, 0, 0.05);
+        }
+
+        .comparison-table td:last-child {
+            border-right: none;
+        }
+
+        .comparison-table tfoot {
+            background: rgba(255, 88, 0, 0.1);
+        }
+
+        .comparison-table tfoot td {
+            font-style: italic;
+            color: #FF5800;
+            text-align: center;
+            padding: 15px;
+            font-weight: 500;
+        }
+
+        mark {
+            background: linear-gradient(120deg, rgba(255, 88, 0, 0.3) 0%, rgba(255, 140, 0, 0.3) 100%);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #FF5800;
+        }
+
+        /* Legendary Drivers Section */
+        .drivers-section {
+            background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("М болид 2.jpg") center/cover;
+            padding: 80px 40px;
+            position: relative;
+        }
+
+        .drivers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .driver-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 88, 0, 0.3);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+
+        .driver-card:hover {
+            transform: scale(1.05);
+            border-color: #FF5800;
+            box-shadow: 0 0 20px rgba(255, 88, 0, 0.5);
+        }
+
+        .driver-image {
+            position: relative;
+            width: 100%;
+            height: 300px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 1px solid rgba(255, 88, 0, 0.3);
+        }
+
+        .driver-name {
+            font-size: 1.5rem;
+            color: #FF5800;
+            margin-bottom: 15px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .driver-era {
+            color: #cccccc;
+            font-style: italic;
+            margin-bottom: 15px;
+        }
+
+        .driver-achievements {
+            list-style: none;
+            color: #cccccc;
+            line-height: 1.5;
+        }
+
+        .driver-achievements li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        /* Constructors Cup Section */
+        .constructors-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 80px 40px;
+        }
+
+        .constructors-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .constructors-text {
+            color: #cccccc;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .constructors-image {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            border-radius: 15px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a1a1a, #2a2a2a);
+            border: 1px solid rgba(255, 88, 0, 0.3);
+        }
+
+        .constructors-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Current Champion Section */
+        .champion-section {
+            background: linear-gradient(
+                    rgba(0, 0, 0, 0.7), 
+                    rgba(0, 0, 0, 0.5)
+                ), url("Кубок постер.jpg") center/cover;
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            padding: 80px 40px;
+        }
+
+        .champion-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .champion-text {
+            color: #ffffff;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 88, 0, 0.3);
+            text-align: justify;
+        }
+
+        .champion-title {
+            font-size: 2.1rem;
+            color: #FF5800;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px rgba(255, 88, 0, 0.5);
+        }
+
+        .champion-image {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .champion-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Support Section */
+        .support-section {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 80px 40px;
+        }
+
+        .support-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .support-text {
+            color: #cccccc;
+            line-height: 1.8;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .support-callout {
+            background: rgba(255, 88, 0, 0.2);
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+            font-weight: bold;
+            border: 1px solid #FF5800;
+            color: #FF5800;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 700;
+        }
+
+        .support-image {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.5s ease;
+        }
+
+        .support-image:hover {
+            transform: translateY(-20px);
+        }
+
+        .support-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        /* Performance Section */
+        .performance {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 80px 40px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 88, 0, 0.1);
+            padding: 40px 20px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 88, 0, 0.3);
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+        .stat-number {
+            font-size: 3rem;
+            color: #FF5800;
+            font-weight: bold;
+            margin-bottom: 10px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 1.1rem;
+            color: #cccccc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Services Section */
+        .services {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 80px 40px;
+            margin-bottom: 80px; /* Добавлен отступ снизу */
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 40px 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 88, 0, 0.3);
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            color: #FF5800;
+            margin-bottom: 20px;
+        }
+
+        .service-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ffffff;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .service-desc {
+            color: #cccccc;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: rgba(0, 0, 0, 0.9);
+            padding: 60px 40px 40px;
+            text-align: center;
+            border-top: 2px solid #FF5800;
+            /* Убран отступ сверху, так как он добавлен к секции услуг */
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-section h3 {
+            color: #FF5800;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .footer-section p, .footer-section a {
+            color: #cccccc;
+            text-decoration: none;
+            line-height: 1.8;
+            font-family: 'Rajdhani', sans-serif;
+            font-weight: 500;
+        }
+
+        .footer-section a:hover {
+            color: #FF5800;
+        }
+
+        .copyright {
+            color: #cccccc;
+            font-size: 1rem;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 88, 0, 0.3);
+            font-family: 'Rajdhani', sans-serif;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-line {
+                font-size: 1.3rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .models-grid, .drivers-grid, .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .f1-content, .constructors-content, .champion-content, .support-content {
+                grid-template-columns: 1fr;
+            }
+
+            .f1-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .stat-number {
+                font-size: 2.5rem;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .table-container {
+                padding: 20px;
+            }
+
+            .comparison-table {
+                min-width: 600px;
+            }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 12px 8px;
+                font-size: 0.9rem;
+            }
+            
+            .header-content {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .logo-section {
+                justify-content: center;
+            }
+            
+            .section-base {
+                padding: 60px 20px;
+            }
+            
+            .models-section, .comparison-section, .drivers-section, 
+            .constructors-section, .champion-section, .support-section,
+            .performance, .services, footer {
+                padding: 60px 20px;
+            }
+            
+            .support-content {
+                grid-template-columns: 1fr;
+            }
+
+            .champion-title {
+                font-size: 2rem;
+            }
+
+            .services {
+                margin-bottom: 60px;
+            }
+
+            .dropdown-content {
+                position: static;
+                display: none;
+                width: 100%;
+                margin-top: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 2rem;
+            }
+
+            .model-card, .driver-card, .service-card {
+                padding: 20px;
+            }
+
+            .comparison-table {
+                min-width: 500px;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .tagline {
+                font-size: 0.7rem;
+            }
+            
+            .nav-links a {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .champion-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Custom Alert -->
+    <div class="overlay" id="overlay"></div>
+    <div class="custom-alert" id="customAlert">
+        <h3>Спасибо!</h3>
+        <p>С вашего счёта было списано 10 000$ в фонд поддержки Оскара Пиастри :)</p>
+        <button onclick="closeCustomAlert()">Закрыть</button>
+    </div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-gif">
+                        <img src="Гифка.gif" alt="McLaren Animation">
+                    </div>
+                    <div class="logo-text">
+                        <div class="logo">MCLAREN</div>
+                        <div class="tagline">Racing DNA Since 1963</div>
+                    </div>
+                </div>
+                <nav>
+                    <ul class="nav-links">
+                        <li><a href="#models">Модели</a></li>
+                        <li><a href="#comparison">Сравнение</a></li>
+                        <li class="dropdown">
+                            <a href="#constructors">Формула 1</a>
+                            <div class="dropdown-content">
+                                <a href="#drivers">Легенды</a>
+                                <a href="#constructors">Кубок Конструкторов</a>
+                                <a href="#champion">Чемпион</a>
+                                <a href="#support">Поддержка</a>
+                            </div>
+                        </li>
+                        <li><a href="#performance">Производительность</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>
+                    <span class="highlight">НИКАКИХ БАРЬЕРОВ </span><br>
+                    НИКАКИХ ОГРАНИЧЕНИЙ
+                </h1>
+                <div class="divider"></div>
+                <p class="hero-line">
+                    МЫ НЕ ПРОСТО РАСШИРЯЕМ<br>
+                    ГРАНИЦЫ ВОЗМОЖНОГО
+                </p>
+                <div class="divider"></div>
+                <p class="hero-line">
+                    МЫ ЦЕЛИКОМ ИХ<br>
+                    ПЕРЕОСМЫСЛИВАЕМ
+                </p>
+            </div>
+        </section>
+
+        <!-- Models Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="models" class="models-section section-base">
+            <h2 class="section-title">Легендарные Модели</h2>
+            <div class="models-grid">
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="P1.jpg" alt="McLaren P1" class="car-image">
+                        </div>
+                    <div class="model-name">McLaren P1</div>
+                    <ul class="model-specs">
+                        <li>Гибридная силовая установка</li>
+                        <li>903 л.с. совокупной мощности</li>
+                        <li>0-100 км/ч: 2.8с</li>
+                        <li>Макс. скорость: 350 км/ч</li>
+                        <li>Углепластиковый монокок</li>
+                    </ul>
+                    <div class="model-price">$1,350,000</div>
+                </div>
+                
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="Artura.jpg" alt="Artura" class="car-image">
+                        </div>
+                    <div class="model-name">McLaren Artura</div>
+                    <ul class="model-specs">
+                        <li>Plug-in Hybrid</li>
+                        <li>671 л.с. совокупной мощности</li>
+                        <li>0-100 км/ч: 3.0с</li>
+                        <li>Запас хода на электро: 30 км</li>
+                        <li>Углепластиковая архитектура</li>
+                    </ul>
+                    <div class="model-price">$225,000</div>
+                </div>
+
+                <div class="model-card">
+                    <div class="model-image">
+                        <img src="720S.jpg" alt="McLaren 720S" class="car-image">
+                        </div>
+                    <div class="model-name">McLaren 720S</div>
+                    <ul class="model-specs">
+                        <li>4.0L Twin-Turbo V8</li>
+                        <li>710 л.с.</li>
+                        <li>0-100 км/ч: 2.9с</li>
+                        <li>Макс. скорость: 341 км/ч</li>
+                        <li>Monocage II шасси</li>
+                    </ul>
+                    <div class="model-price">$299,000</div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider section-divider-bottom"></div>
+
+        <!-- Comparison Table Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="comparison" class="comparison-section section-base">
+            <h2 class="section-title">Сравнительная таблица</h2>
+            <div class="table-container">
+                <table class="comparison-table">
+                    <thead>
+                        <tr>
+                            <th>Характеристика</th>
+                            <th>McLaren P1</th>
+                            <th>McLaren 720S</th>
+                            <th>McLaren Artura</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr>
+                            <td>Цена</td>
+                            <td>$1,350,000</td>
+                            <td>$299,000</td>
+                            <td>$225,000</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Тип двигателя</td>
+                            <td>Гибридный</td>
+                            <td>Бензиновый Twin-Turbo</td>
+                            <td>Plug-in Hybrid</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Объем двигателя</td>
+                            <td>3.8L V8 + электромотор</td>
+                            <td>4.0L V8</td>
+                            <td>3.0L V6 + электромотор</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Мощность</td>
+                            <td>903 л.с.</td>
+                            <td>710 л.с.</td>
+                            <td>671 л.с.</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Крутящий момент</td>
+                            <td>900 Нм</td>
+                            <td>770 Нм</td>
+                            <td>720 Нм</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Разгон 0-100 км/ч</td>
+                            <td>2.8 сек</td>
+                            <td>2.9 сек</td>
+                            <td>3.0 сек</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Макс. скорость</td>
+                            <td>350 км/ч</td>
+                            <td>341 км/ч</td>
+                            <td>330 км/ч</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Трансмиссия</td>
+                            <td>7-ступ. робот</td>
+                            <td>7-ступ. робот</td>
+                            <td>8-ступ. робот</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Привод</td>
+                            <td>Задний</td>
+                            <td>Задний</td>
+                            <td>Задний</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Вес</td>
+                            <td>1,395 кг</td>
+                            <td>1,419 кг</td>
+                            <td>1,395 кг</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Расход топлива</td>
+                            <td>8.3 л/100км</td>
+                            <td>10.7 л/100км</td>
+                            <td>5.0 л/100км</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Выбросы CO2</td>
+                            <td>194 г/км</td>
+                            <td>249 г/км</td>
+                            <td>129 г/км</td>
+                        </tr>
+                        
+                        <tr>
+                            <td>Электрический ход</td>
+                            <td>10 км</td>
+                            <td>—</td>
+                            <td>30 км</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+        <div class="section-divider section-divider-bottom"></div>
+
+        <!-- Legendary Drivers Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="drivers" class="drivers-section section-base">
+            <h2 class="section-title">Легендарные Пилоты</h2>
+            <div class="drivers-grid">
+                <div class="driver-card" onclick="window.open('https://www.youtube.com/watch?v=4QbQgCtjWAc', '_blank')">
+                    <div class="driver-image">
+                        <img src="Сенна.jpg" alt="Айртон Сенна" class="car-image">
+                        </div>
+                    <div class="driver-name">Айртон Сенна</div>
+                    <div class="driver-era">1988-1993</div>
+                    <ul class="driver-achievements">
+                        <li>3 чемпионских титула с McLaren</li>
+                        <li>35 побед за команду</li>
+                        <li>Легендарные дуэли с Аленом Простом</li>
+                        <li>MP4/4 - самый доминирующий болид в истории</li>
+                    </ul>
+                </div>
+
+                <div class="driver-card" onclick="window.open('https://www.youtube.com/watch?v=P3tCKfewDQQ', '_blank')">
+                    <div class="driver-image">
+                        <img src="Прост.jpg" alt="Ален Прост" class="car-image">
+                        </div>
+                    <div class="driver-name">Ален Прост</div>
+                    <div class="driver-era">1984-1989</div>
+                    <ul class="driver-achievements">
+                        <li>3 чемпионских титула с McLaren</li>
+                        <li>30 побед за команду</li>
+                        <li>Известен как "Профессор" за тактический подход</li>
+                        <li>Четырехкратный чемпион мира</li>
+                    </ul>
+                </div>
+
+                <div class="driver-card" onclick="window.open('https://www.youtube.com/watch?v=gZeRO_JHsfs', '_blank')">
+                    <div class="driver-image">
+                        <img src="Мика.jpg" alt="Мика Хаккинен" class="car-image">
+                        </div>
+                    <div class="driver-name">Мика Хаккинен</div>
+                    <div class="driver-era">1993-2001</div>
+                    <ul class="driver-achievements">
+                        <li>2 чемпионских титула с McLaren</li>
+                        <li>20 побед за команду</li>
+                        <li>Возрождение McLaren в конце 90-х</li>
+                        <li>Легендарные сражения с Михаэлем Шумахером</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider section-divider-bottom"></div>
+
+        <!-- Constructors Cup Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="constructors" class="constructors-section section-base">
+            <h2 class="section-title">Кубок конструкторов</h2>
+            <div class="constructors-content">
+                <div class="constructors-image">
+                    <img src="кубок.jpg" alt="Кубок конструкторов McLaren">
+                </div>
+                <div class="constructors-text">
+                    <p>В историческом сезоне 2025 года команда Формулы 1 McLaren совершила невероятное достижение, досрочно завоевав свой 10-й Кубок конструкторов!</p>
+                    <p>Этот триумф стал результатом многолетней работы инженеров, механиков и всех сотрудников команды, которые неустанно стремились к совершенству.</p>
+                    <p>Новая аэродинамическая концепция, революционная силовая установка и слаженная работа команды позволили McLaren доминировать в чемпионате, опередив всех конкурентов за несколько гонок до окончания сезона.</p>
+                    <p>Этот десятый Кубок конструкторов в истории McLaren подтверждает статус команды как одной из величайших в автоспорте и открывает новую главу в её славной истории.</p>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider section-divider-bottom"></div>
+
+        <!-- Current Champion Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="champion" class="champion-section section-base">
+            <div class="champion-content">
+                <div class="champion-text">
+                    <div class="champion-title">ОСКАР ПИАСТРИ - БУДУЩИЙ ЧЕМПИОН</div>
+                    <p>Оскар Пиастри - австралийский гонщик, выступающий за команду McLaren в Формуле 1. С момента своего дебюта он демонстрирует невероятный талант, зрелость и скорость, превосходящие его возраст.</p>
+                    <p>В сезоне 2025 года Оскар показывает выдающиеся результаты, регулярно поднимаясь на подиум и одерживая победы. Его мастерство в дождливых условиях, тактическое мышление и способность сохранять хладнокровие в напряженных ситуациях впечатляют экспертов и болельщиков.</p>
+                    <p>Сейчас Оскар Пиастри является главным претендентом на чемпионский титул в текущем сезоне. Его целеустремленность, работоспособность и природный талант делают его одним из самых перспективных пилотов нового поколения.</p>
+                </div>
+                <div class="champion-image">
+                    <img src="Оскар лохматый.jpg" alt="Оскар Пиастри">
+                </div>
+            </div>
+        </section>
+        <div class="section-divider section-divider-bottom"></div>
+
+        <!-- Support Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="support" class="support-section section-base">
+            <h2 class="section-title">Поддержка</h2>
+            <div class="support-content">
+                <div class="support-image" id="supportImage">
+                    <img src="Оскар пнг.png" alt="Оскар Пиастри">
+                </div>
+                <div class="support-text">
+                    <p>Автор данного сайта является большим фанатом Оскара Пиастри и верит в его чемпионский потенциал. Мы будем рады, если вы поддержите его борьбу за титул в этом сезоне!</p>
+                    <p>Ваша поддержка поможет Оскару чувствовать дополнительную мотивацию и уверенность в борьбе за чемпионский титул. Вместе мы можем помочь ему достичь вершины!</p>
+                    <p>Вы тоже можете внести свой вклад в поддержку Оскара Пиастри. Каждая помощь важна на пути к чемпионству!</p>
+                    <div class="support-callout">
+                        Хотите поддержать Оскара? Нажмите на него!
+                    </div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider section-divider-bottom"></div>
+
+        <!-- Performance Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="performance" class="performance section-base">
+            <h2 class="section-title">Непревзойденная Производительность</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number">2.5с</div>
+                    <div class="stat-label">0-100 км/ч</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">350+</div>
+                    <div class="stat-label">Макс. Скорость (км/ч)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">900+</div>
+                    <div class="stat-label">Лошадиных Сил</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">183</div>
+                    <div class="stat-label">Побед в Ф1</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">8</div>
+                    <div class="stat-label">Кубков конструкторов</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number">12</div>
+                    <div class="stat-label">Чемпионских титулов</div>
+                </div>
+            </div>
+        </section>
+        <div class="section-divider section-divider-bottom"></div>
+
+        <!-- Services Section -->
+        <div class="section-divider section-divider-top"></div>
+        <section id="services" class="services section-base">
+            <h2 class="section-title">СЕРВИС И РЕШЕНИЯ</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🍊</div>
+                    <div class="service-title">Индивидуальный Инжиниринг</div>
+                    <div class="service-desc">Эксклюзивные решения, созданные с учетом ваших предпочтений вождения и требований к производительности.</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🧡</div>
+                    <div class="service-title">Экспертное Обслуживание</div>
+                    <div class="service-desc">Комплексные сервисные программы от сертифицированных технических специалистов McLaren.</div>
+                </div>
+
+                <div class="service-card">
+                    <div class="service-icon">🏀</div>
+                    <div class="service-title">Тюнинг Производительности</div>
+                    <div class="service-desc">Продвинутые опции тюнинга для раскрытия полного потенциала вашего McLaren.</div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>McLaren Automotive</h3>
+                    <p>Где инновации встречаются с производительностью. С 1963 года создаем автомобили, вдохновленные гоночным наследием.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Контакты</h3>
+                    <p>McLaren Technology Centre</p>
+                    <p>Woking, Surrey, UK</p>
+                    <p>info@mclaren.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Гоночное Наследие</h3>
+                    <p>Формула 1 с 1966 года</p>
+                    <p>10 кубков конструкторов</p>
+                    <p>12 чемпионских титулов</p>
+                </div>
+            </div>
+            <div class="copyright">
+                McLaren Automotive © 2025 | Выполнено Findrik Studio
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Custom alert functions
+        function showCustomAlert() {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('customAlert').style.display = 'block';
+        }
+
+        function closeCustomAlert() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('customAlert').style.display = 'none';
+        }
+
+        // Support image click handler
+        document.getElementById('supportImage').addEventListener('click', showCustomAlert);
+    </script>
+</body>
+</html>
